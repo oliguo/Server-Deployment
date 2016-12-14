@@ -49,7 +49,7 @@ sudo locale-gen en_US.UTF-8
 
 Or mapping local locate to server like below:
 <pre>
-LC_ALL=en_US.UTF-8 ssh <name>@<host>
+LC_ALL=en_US.UTF-8 ssh name@host
 </pre>
 
 ##External Package
