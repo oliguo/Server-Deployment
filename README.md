@@ -86,11 +86,3 @@ sudo apt-get --purge remove
 sudo netstat -tunap | grep LISTEN
 sudo kill xxxx
 </pre>
-
-##Apache/MySql/PHP/PHPMyAdmin
-**reference** [1](https://gregrickaby.com/2013/05/how-to-install-lamp-on-ubuntu/)
-[2](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04)
-
-<pre>
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
-</pre>
