@@ -53,11 +53,11 @@ sudo nano /etc/apache2/mods-enabled/dir.conf
 </pre>
 
 Modify like below:
-<pre>
-\<IfModule mod_dir.c>
+```
+<IfModule mod_dir.c>
     DirectoryIndex **index.php** index.html index.cgi index.pl index.xhtml index.htm
-\</IfModule>
-</pre>
+</IfModule>
+```
 
 Then restart
 <pre>
