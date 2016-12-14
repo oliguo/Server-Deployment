@@ -24,6 +24,7 @@ sudo apt-get autoremove
 sudo apt-get install mysql-server-5.6 mysql-client-5.6
 which mysql
 mysql -V
+*Uninstall:
 sudo apt-get autoremove --purge mysql-server-5.6
 sudo apt-get autoremove --purge mysql-client-5.6
 </pre>
