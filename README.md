@@ -4,7 +4,7 @@ Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
 **LAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/LAMPP.md)
 
-**XAMPP** 
+**XAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/XAMPP.md)
 
 ##Check File/Folder Size
 
