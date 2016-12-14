@@ -21,6 +21,7 @@ du -sh xxxx.file
 <pre>
 *speedtest
 wget -O speedtest-cli-newest https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+sudo ./speedtest-cli-newest
 </pre>
 
 ##Locale Language Setting
@@ -48,7 +49,7 @@ sudo locale-gen en_US.UTF-8
 
 Or mapping local locate to server like below:
 <pre>
-LC\_ALL=en_US.UTF-8 ssh \<name>@\<host>
+LC_ALL=en_US.UTF-8 ssh <name>@<host>
 </pre>
 
 ##External Package
@@ -65,11 +66,11 @@ sudo apt-get install ppa-purge
 </pre>
 And then remove the PPA, downgrading gracefully packages it provided to packages provided by official repositories:
 <pre>
-sudo ppa-purge ppa\_name
+sudo ppa-purge ppa_name
 </pre>
 Note that this will uninstall packages provided by the PPA, but not those provided by the official repositories. If you want to remove them, you should tell it to apt:
 <pre>
-sudo apt-get purge package\_name
+sudo apt-get purge package_name
 </pre>
 You can also remove PPAs by deleting the .list files from /etc/apt/sources.list.d directory.
 
