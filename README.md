@@ -82,7 +82,7 @@ You can also remove PPAs by deleting the .list files from /etc/apt/sources.list.
 service --status-all
 sudo service xxxx stop
 sudo apt-get remove xxx
-sudo apt-get --purge remove
+sudo apt-get --purge remove xxx
 *port
 sudo netstat -tunap | grep LISTEN
 sudo kill xxxx
