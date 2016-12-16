@@ -13,6 +13,15 @@ df -h /path/xxx
 du -sh xxxx.file
 </pre>
 
+##Rename,Copy file/folder
+
+<pre>
+*rename
+mv old.file new file
+
+*copy
+cp -r /path/folder/xxx /target/folder/xxx
+</pre>
 
 ##Server BandWidth Speed Test
 
