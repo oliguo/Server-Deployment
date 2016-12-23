@@ -100,3 +100,33 @@ sudo apt-get --purge remove xxx
 sudo netstat -tunap | grep LISTEN
 sudo kill xxxx
 </pre>
+
+##Create FTP User (Proftp)
+
+<pre>
+*add Group
+groupadd ABCftp
+*if remove
+groupdel ABCftp
+
+*add user with home directory
+useradd -m -d /opt/lampp/htdocs/ABC -g ABCftp -s /sbin/nologin ABCuser
+
+    *if show error below:
+    useradd: warning: the home directory already exists.
+    Not copying any file from skel directory into it.
+    *please remove the folder and re-create new one(recommend)
+
+*set user password
+passwd ABCuser
+
+*set only folder which user access
+*1.edit proftpd.conf
+sudo /opt/lampp/etc/proftpd.conf
+*and comment below:
+#DefaultRoot /opt/lampp/htdocs
+*and add user specify folder
+DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
+*restart lampp
+</pre>
+
