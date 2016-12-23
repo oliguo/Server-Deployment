@@ -66,6 +66,35 @@ edit like below without **Indexes**:
 Options Includes FollowSymLinks MultiViews
 </pre>
 
+##Create FTP User (Proftp)
+
+<pre>
+*add Group
+groupadd ABCftp
+*if remove
+groupdel ABCftp
+
+*add user with home directory
+useradd -m -d /opt/lampp/htdocs/ABC -g ABCftp -s /sbin/nologin ABCuser
+
+    *if show error below:
+    useradd: warning: the home directory already exists.
+    Not copying any file from skel directory into it.
+    *please remove the folder and re-create new one(recommend)
+
+*set user password
+passwd ABCuser
+
+*set only folder which user access
+*1.edit proftpd.conf
+sudo /opt/lampp/etc/proftpd.conf
+*and comment below:
+#DefaultRoot /opt/lampp/htdocs
+*and add user specify folder
+DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
+*restart lampp
+</pre>
+
 ##Virtual Host Setup
 reference:
 [1](http://serverfault.com/questions/246445/how-do-i-create-virtual-hosts-for-different-ports-on-apache/246474)
