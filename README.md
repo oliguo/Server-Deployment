@@ -20,6 +20,9 @@ du -sh xxxx.file
 *rename
 mv old.file new file
 
+*if move file to some directory
+mv /path/a.file /target/a.file
+
 *copy
 cp -r /path/folder/xxx /target/folder/xxx
 </pre>
