@@ -18,6 +18,7 @@ sudo /opt/lampp/lampp security
 
 ###Access Forbidden Setting
 ```
+sudo /opt/lampp/lampp stop
 sudo nano /opt/lampp/etc/extra/httpd-xampp.conf
 ```
 edit like below
