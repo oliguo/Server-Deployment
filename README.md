@@ -34,6 +34,7 @@ cp -r /path/folder/xxx /target/folder/xxx
 <pre>
 *speedtest
 wget -O speedtest-cli-newest https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+sudo chmod +x speedtest-cli-newest
 sudo ./speedtest-cli-newest
 </pre>
 
