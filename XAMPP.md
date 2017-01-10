@@ -43,7 +43,7 @@ Require all granted #add this
 reference [here](http://computernetworkingnotes.com/ubuntu-12-04-tips-and-tricks/how-to-start-xampp-automatically-in-ubuntu.html)
 
 <pre>
-sudo vim /etc/init.d/lampp
+sudo nano /etc/init.d/lampp
 </pre>
 
 add below:
