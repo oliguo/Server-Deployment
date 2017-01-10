@@ -88,7 +88,7 @@ passwd ABCuser
 
 *set only folder which user access
 *1.edit proftpd.conf
-sudo /opt/lampp/etc/proftpd.conf
+sudo nano /opt/lampp/etc/proftpd.conf
 *and comment below:
 #DefaultRoot /opt/lampp/htdocs
 *and add user specify folder
