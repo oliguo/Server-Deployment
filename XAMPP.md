@@ -49,7 +49,7 @@ sudo nano /etc/init.d/lampp
 add below:
 ```
 #!/bin/bash
-/opt/lampp/lampp start
+/opt/lampp/lampp restart
 ```
 then:
 <pre>
