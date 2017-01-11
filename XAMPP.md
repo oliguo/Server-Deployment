@@ -94,6 +94,8 @@ sudo nano /opt/lampp/etc/proftpd.conf
 *and add user specify folder
 DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
 *restart lampp
+*and set user permission
+sudo chown -R ABCuser:ABCftp /var/www/test/public_html
 </pre>
 
 ##Virtual Host Setup
