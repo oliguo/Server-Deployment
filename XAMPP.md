@@ -249,3 +249,5 @@ Ather that you can go to SSLLab to test like
 https://www.ssllabs.com/ssltest/analyze.html?d=yourdomain&latest=yes
 </pre>
 
+like below
+<img src="https://github.com/oliguo/Server_Deployment/blob/master/SSL_setup_SSLLab_overall_rating.png" height="200"/>
