@@ -180,7 +180,12 @@ nano yourdomain.csr
 5.change virtual host to 443 port for multi-ssl
 
 <pre>
+sudo nano /opt/lampp/etc/extra/httpd-vhosts.conf
+</pre>
 
+then add below
+
+```
 NameVirtualHost *:443
 
 <VirtualHost *:443>
@@ -214,8 +219,7 @@ NameVirtualHost *:443
     ErrorLog "/opt/lampp/htdocs/youdomain_B/domain_ssl_error_log"
     ErrorDocument 404 https://youdomain_B 
 </VirtualHost>
-
-</pre>
+```
 
 
 ##Config Overall Rating to 'A' from SSLLab Report Test
@@ -233,4 +237,9 @@ SSLHonorCipherOrder on
 SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4"
 </pre>
 
+Remember to restart xampp
+
+<pre>
+/opt/lampp/lampp restart
+</pre>
 
