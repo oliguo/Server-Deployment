@@ -243,3 +243,9 @@ Remember to restart xampp
 /opt/lampp/lampp restart
 </pre>
 
+Ather that you can go to SSLLab to test like
+
+<pre>
+https://www.ssllabs.com/ssltest/analyze.html?d=yourdomain&latest=yes
+</pre>
+
