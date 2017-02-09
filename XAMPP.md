@@ -1,5 +1,5 @@
 ##XAMPP Version 5.6.28
-***Last Edit:2016-12-26***
+***Last Edit:2017-02-09***
 
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
@@ -142,3 +142,95 @@ add below sample
 <pre>
 /opt/lampp/lampp restart
 </pre>
+
+##SSL Setup with Xampp（Authorized with godaddy）
+
+1.
+<pre>
+cd /opt/lampp/etc/ssl.key
+</pre>
+
+2.
+<pre>
+openssl genrsa -out yourdomain.key 2048
+</pre>
+
+3.
+<pre>
+openssl req -new -key yourdomain.key -out yourdomain.csr
+</pre>
+
+then will enter info like detail below,and no to enter password:
+
+<pre>
+Country Name (2 letter code) [AU]:xxxx
+State or Province Name (full name) [Some-State]:xxxx
+Locality Name (eg, city) []:xxx
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:xxxx
+Organizational Unit Name (eg, section) []:xxxx
+Common Name (eg, YOUR name) []:yourdomain
+Email Address []:your email
+</pre>
+
+4.open csr and copy cert string to godaddy to auth
+<pre>
+nano yourdomain.csr
+</pre>
+
+5.change virtual host to 443 port for multi-ssl
+
+<pre>
+
+NameVirtualHost *:443
+
+<VirtualHost *:443>
+    DocumentRoot "/opt/lampp/htdocs/youdomain_A"
+    ServerName youdomain_A
+    SSLProtocol all -SSLv2 -SSLv3
+    SSLCertificateFile "/opt/lampp/etc/ssl.crt/youdomain_A/youdomain_A.crt" ->from godady
+    SSLCertificateKeyFile "/opt/lampp/etc/ssl.key/youdomain_A.key"
+    SSLCertificateChainFile "/opt/lampp/etc/ssl.crt/youdomain_A/gd_bundle-g2-g1.crt" ->from godaddy
+    <Directory "/opt/lampp/htdocs/youdomain_A/">
+        Options All
+    	AllowOverride All
+    	Require all granted
+    </Directory>
+    ErrorLog "/opt/lampp/htdocs/youdomain_A/domain_ssl_error_log"
+    ErrorDocument 404 https://youdomain_A 
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot "/opt/lampp/htdocs/youdomain_B"
+    ServerName youdomain_B
+    SSLProtocol all -SSLv2 -SSLv3 ->improve Overall Rating to 'A' from SSLLab Report Test
+    SSLCertificateFile "/opt/lampp/etc/ssl.crt/youdomain_B/youdomain_B.crt" ->from godady
+    SSLCertificateKeyFile "/opt/lampp/etc/ssl.key/youdomain_B.key"
+    SSLCertificateChainFile "/opt/lampp/etc/ssl.crt/youdomain_B/gd_bundle-g2-g1.crt" ->from godaddy
+    <Directory "/opt/lampp/htdocs/youdomain_B/">
+        Options All
+    	AllowOverride All
+    	Require all granted
+    </Directory>
+    ErrorLog "/opt/lampp/htdocs/youdomain_B/domain_ssl_error_log"
+    ErrorDocument 404 https://youdomain_B 
+</VirtualHost>
+
+</pre>
+
+
+##Config Overall Rating to 'A' from SSLLab Report Test
+1.make sure your xampp included newest openssl,if not,please install newest xampp to upgrade.
+
+2.
+<pre>
+sudo nano /opt/lampp/etc/extra/httpd-ssl.conf
+</pre>
+
+add below in file
+
+<pre>
+SSLHonorCipherOrder on 
+SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4"
+</pre>
+
+
