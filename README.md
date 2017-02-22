@@ -7,7 +7,7 @@ Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
 **XAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/XAMPP.md)
 
-##Change server Time
+##Change Server Time
 
 <pre>
 sudo apt-get install ntp
