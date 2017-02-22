@@ -7,6 +7,36 @@ Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
 **XAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/XAMPP.md)
 
+##Change server Time
+
+<pre>
+sudo apt-get install ntp
+</pre>
+then,edit file
+<pre>
+sudo nano /etc/ntp.conf
+</pre>
+add below:
+<pre>
+server ntp.ubuntu.com
+server pool.ntp.org
+</pre>
+restart
+<pre>
+sudo service ntp stop
+sudo service ntp start
+</pre>
+Check server time and set timezone:
+<pre>
+sudo dpkg-reconfigure tzdata
+</pre>
+will show:
+<pre>
+Current default time zone: 'Asia/Hong_Kong'
+Local time is now:      Wed Feb 22 20:16:02 HKT 2017.
+Universal Time is now:  Wed Feb 22 12:16:02 UTC 2017.
+</pre>
+
 ##Check File/Folder Size
 
 <pre>
