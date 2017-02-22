@@ -204,7 +204,7 @@ NameVirtualHost *:443
     SSLCertificateKeyFile "/opt/lampp/etc/ssl.key/youdomain_A.key"
     SSLCertificateChainFile "/opt/lampp/etc/ssl.crt/youdomain_A/gd_bundle-g2-g1.crt" ->from godaddy
     <Directory "/opt/lampp/htdocs/youdomain_A/">
-        Options All
+        Options Includes FollowSymLinks MultiViews
     	AllowOverride All
     	Require all granted
     </Directory>
@@ -220,7 +220,7 @@ NameVirtualHost *:443
     SSLCertificateKeyFile "/opt/lampp/etc/ssl.key/youdomain_B.key"
     SSLCertificateChainFile "/opt/lampp/etc/ssl.crt/youdomain_B/gd_bundle-g2-g1.crt" ->from godaddy
     <Directory "/opt/lampp/htdocs/youdomain_B/">
-        Options All
+        Options Includes FollowSymLinks MultiViews
     	AllowOverride All
     	Require all granted
     </Directory>
