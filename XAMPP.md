@@ -1,22 +1,22 @@
-##XAMPP Version 5.6.28
+## XAMPP Version 5.6.28
 ***Last Edit:2017-02-09***
 
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
-###Download And Install
+### Download And Install
 <pre>
 wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.28/xampp-linux-x64-5.6.28-0-installer.run
 sudo chmod 777 xampp-linux-*-installer.run
 sudo ./xampp-linux-*-installer.run
 </pre>
 
-###Restart and Secure Xampp
+### Restart and Secure Xampp
 <pre>
 sudo /opt/lampp/lampp restart
 sudo /opt/lampp/lampp security
 </pre>
 
-###Access Forbidden Setting
+### Access Forbidden Setting
 ```
 sudo /opt/lampp/lampp stop
 sudo nano /opt/lampp/etc/extra/httpd-xampp.conf
@@ -39,7 +39,7 @@ Require all granted #add this
 </Directory>
 ```
 
-###XAMPP Auto Start
+### XAMPP Auto Start
 reference [here](http://computernetworkingnotes.com/ubuntu-12-04-tips-and-tricks/how-to-start-xampp-automatically-in-ubuntu.html)
 
 <pre>
@@ -58,7 +58,7 @@ sudo update-rc.d lampp defaults
 sudo reboot
 </pre>
 
-##Disable Directory Index
+## Disable Directory Index
 <pre>
 sudo nano /opt/lampp/etc/httpd.conf
 </pre>
@@ -67,7 +67,7 @@ edit like below without **Indexes**:
 Options Includes FollowSymLinks MultiViews
 </pre>
 
-##Create FTP User (Proftp)
+## Create FTP User (Proftp)
 
 <pre>
 *add Group
@@ -98,7 +98,7 @@ DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
 sudo chown -R ABCuser:ABCftp /var/www/test/public_html
 </pre>
 
-##Virtual Host Setup
+## Virtual Host Setup
 reference:
 [1](http://serverfault.com/questions/246445/how-do-i-create-virtual-hosts-for-different-ports-on-apache/246474)
 [2](http://www.9streets.cn/art-php-535.html)
@@ -143,7 +143,7 @@ add below sample
 /opt/lampp/lampp restart
 </pre>
 
-##SSL Setup with Xampp（Authorized with godaddy）
+## SSL Setup with Xampp（Authorized with godaddy）
 
 reference
 
@@ -230,7 +230,7 @@ NameVirtualHost *:443
 ```
 
 
-##Config Overall Rating to 'A' from SSLLab Report Test
+## Config Overall Rating to 'A' from SSLLab Report Test
 1.make sure your xampp included newest openssl,if not,please install newest xampp to upgrade.
 
 2.
