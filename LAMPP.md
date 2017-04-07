@@ -1,4 +1,4 @@
-##Apache/MySql/PHP/PHPMyAdmin
+## Apache/MySql/PHP/PHPMyAdmin
 **reference** [1](https://gregrickaby.com/2013/05/how-to-install-lamp-on-ubuntu/)
 [2](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04)
 
@@ -43,7 +43,7 @@ sudo apt-get update
 sudo apt-get install phpmyadmin
 </pre>
 
-##PHP Setting
+## PHP Setting
 **reference** [1](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04)
 
 Make first look for a file called **index.php**. 
@@ -64,7 +64,7 @@ Then restart
 sudo service apache2 restart
 </pre>
 
-##PHPMyAdmin Setting
+## PHPMyAdmin Setting
 
 <pre>
 sudo nano /etc/apache2/apache2.conf
