@@ -1,4 +1,4 @@
-#Server Deployment
+# Server Deployment
 ***Last Edit:2016-12-16***
 
 Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
@@ -7,7 +7,7 @@ Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
 **XAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/XAMPP.md)
 
-##Change Server Time
+## Change Server Time
 
 <pre>
 sudo apt-get install ntp
@@ -37,14 +37,14 @@ Local time is now:      Wed Feb 22 20:16:02 HKT 2017.
 Universal Time is now:  Wed Feb 22 12:16:02 UTC 2017.
 </pre>
 
-##Check File/Folder Size
+## Check File/Folder Size
 
 <pre>
 df -h /path/xxx
 du -sh xxxx.file
 </pre>
 
-##Rename,Copy file/folder
+## Rename,Copy file/folder
 
 <pre>
 *rename
@@ -57,7 +57,7 @@ mv /path/a.file /target/a.file
 cp -r /path/folder/xxx /target/folder/xxx
 </pre>
 
-##Server BandWidth Speed Test
+## Server BandWidth Speed Test
 
 **reference** [here](http://askubuntu.com/questions/104755/how-to-check-internet-speed-via-terminal)
 
@@ -68,7 +68,7 @@ sudo chmod +x speedtest-cli-newest
 sudo ./speedtest-cli-newest
 </pre>
 
-##Locale Language Setting
+## Locale Language Setting
 <pre>
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -96,7 +96,7 @@ Or mapping local locate to server like below:
 LC_ALL=en_US.UTF-8 ssh name@host
 </pre>
 
-##External Package
+## External Package
 
 **reference** [here](http://askubuntu.com/questions/307/how-can-ppas-be-removed)
 
@@ -119,7 +119,7 @@ sudo apt-get purge package_name
 You can also remove PPAs by deleting the .list files from /etc/apt/sources.list.d directory.
 
 
-##Check Services or Ports,then Stop and Remove
+## Check Services or Ports,then Stop and Remove
 
 <pre>
 *service
