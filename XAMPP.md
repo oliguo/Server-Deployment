@@ -143,6 +143,20 @@ add below sample
 /opt/lampp/lampp restart
 </pre>
 
+## Blocking Direct IP Access in Apache
+```
+<VirtualHost *:80>
+    ServerName 123.123.123.123
+    Redirect 403 /
+    ErrorDocument 403 "No"
+    #ErrorDocument 403 https://github.com
+    DocumentRoot /dev/null/
+    UseCanonicalName Off
+    UserDir disabled
+    ErrorLog "/opt/lampp/htdocs/IP_error_log"
+</VirtualHost>
+```
+
 ## SSL Setup with Xampp（Authorized with godaddy）
 
 reference
