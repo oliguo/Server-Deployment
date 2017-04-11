@@ -96,6 +96,17 @@ DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
 *restart lampp
 *and set user permission
 sudo chown -R ABCuser:ABCftp /var/www/test/public_html
+
+#check folder user and group
+ls -l /path/your folder
+
+#change user group
+#To assign a primary group to an user:
+usermod -g primarygroupname username
+
+#To assign secondary groups to a user (-a keeps already existing secondary groups intact otherwise they'll be removed):
+usermod -a -G secondarygroupname username
+
 </pre>
 
 ## Virtual Host Setup
