@@ -49,7 +49,16 @@ sudo nano /etc/init.d/lampp
 add below:
 ```
 #!/bin/bash
-/opt/lampp/lampp restart
+### BEGIN INIT INFO
+# Provides: lampp
+# Required-Start:    $local_fs $syslog $remote_fs dbus
+# Required-Stop:     $local_fs $syslog $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start lampp
+### END INIT INFO
+/opt/lampp/lampp start
+
 ```
 then:
 <pre>
