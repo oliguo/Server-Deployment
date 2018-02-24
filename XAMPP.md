@@ -40,32 +40,36 @@ Require all granted #add this
 ```
 
 ### XAMPP Auto Start
-reference [here](http://computernetworkingnotes.com/ubuntu-12-04-tips-and-tricks/how-to-start-xampp-automatically-in-ubuntu.html)
-
-<pre>
-sudo nano /etc/init.d/lampp
-</pre>
-
-add below:
+1.Copy the /opt/lampp/lampp script to the /etc/init.d directory.
 ```
-#!/bin/bash
+sudo cp /opt/lampp/lampp /etc/init.d
+```
+2.Add or modify the following lines at the beginning of the /etc/init.d/lampp script.
+```
 ### BEGIN INIT INFO
-# Provides: lampp
-# Required-Start:    $local_fs $syslog $remote_fs dbus
-# Required-Stop:     $local_fs $syslog $remote_fs
+# Provides:          xampp
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Start lampp
+# Short-Description: Start XAMPP at boot time
+# Description:       Enable services provided by XAMPP.
 ### END INIT INFO
-/opt/lampp/lampp start
-
 ```
-then:
-<pre>
-sudo chmod +x /etc/init.d/lampp
-sudo update-rc.d lampp defaults
-sudo reboot
-</pre>
+3.Add the script to the default runlevels and enable it.
+```
+sudo update-rc.d -f lampp defaults
+sudo update-rc.d -f lampp enable
+```
+4.Reboot your system and XAMPP should start automatically.
+
+To revert the changes, use the commands below:
+```
+cd /etc/init.d
+sudo update-rc.d -f lampp remove
+```
+
+
 
 ## Disable Directory Index
 <pre>
