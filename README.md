@@ -55,6 +55,21 @@ mv /path/a.file /target/a.file
 
 *copy
 cp -r /path/folder/xxx /target/folder/xxx
+
+*Recursive, Non-Overwriting File Copy
+sudo cp -vnpr /xxx/* /yyy
+
+xxx = source
+
+yyy = destination
+
+v = verbose
+
+n = no clobber (no overwrite)
+
+p = preserve permissions
+
+r = recursive
 </pre>
 
 ## Server BandWidth Speed Test
