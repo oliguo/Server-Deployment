@@ -171,7 +171,6 @@ add below sample
     Redirect 403 /
     ErrorDocument 403 "No"
     #ErrorDocument 403 https://github.com
-    DocumentRoot /dev/null/
     UseCanonicalName Off
     UserDir disabled
     ErrorLog "/opt/lampp/htdocs/IP_error_log"
