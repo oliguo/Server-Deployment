@@ -1,5 +1,5 @@
 # Server Deployment
-***Last Edit:2016-12-16***
+***Last Edit:2018-03-05***
 
 Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
@@ -147,3 +147,53 @@ sudo netstat -tunap | grep LISTEN
 sudo kill xxxx
 </pre>
 
+## How To Add Swap on Ubuntu 14.04
+[reference](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04)
+
+<pre>
+
+1.check swap:
+
+sudo swapon -s
+
+and:
+
+free -m
+
+2.create what you want memory for swap
+
+sudo fallocate -l 4G /swapfile  =>4g
+
+3.check swapfile
+
+ls -lh /swapfile
+
+4.enable swapfile
+
+sudo chmod 600 /swapfile
+
+5.check again
+
+ls -lh /swapfile
+
+6.next setup
+
+sudo mkswap /swapfile
+
+sudo swapon /swapfile
+
+7.check it
+
+sudo swapon -s
+
+free -m
+
+8.make it permanent
+
+sudo nano /etc/fstab
+
+add bottom:
+
+/swapfile   none    swap    sw    0   0
+
+</pre>
