@@ -1,5 +1,5 @@
 ## XAMPP Version 5.6.28
-***Last Edit:2017-02-09***
+***Last Edit:2018-08-03***
 
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
@@ -297,3 +297,29 @@ https://www.ssllabs.com/ssltest/analyze.html?d=yourdomain&latest=yes
 like below
 
 <img src="https://github.com/oliguo/Server_Deployment/blob/master/SSL_setup_SSLLab_overall_rating.png" height="500"/>
+
+## Fixed issues:
+
+### mysql_connect()“No such file or directory”
+```
+>locate mysql.sock
+>>/opt/lampp/var/mysql/mysql.sock
+>sudo nano /opt/lampp/etc/php.ini
+find and change as below
+pdo_mysql.default_socket=/opt/lampp/var/mysql/mysql.sock
+mysql.default_socket=/opt/lampp/var/mysql/mysql.sock
+mysqli.default_socket=/opt/lampp/var/mysql/mysql.sock
+```
+
+### Apache/2.2.22 (Unix) configured -- resuming normal operations
+```
+>sudo nano /opt/lampp/etc/httpd.conf
+>find and comment all coding as below
+#DocumentRoot "/opt/lampp/htdocs"
+#<Directory "/opt/lampp/htdocs">
+    #.....comment everything
+#</Directory>
+```
+
+
+
