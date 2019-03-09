@@ -197,3 +197,10 @@ add bottom:
 /swapfile   none    swap    sw    0   0
 
 </pre>
+
+## Helpful visual to check traffic
+```
+sudo apt-get install slurm
+
+slurm -s -i eth0
+```
