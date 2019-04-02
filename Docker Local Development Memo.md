@@ -14,17 +14,16 @@ sudo nano /etc/hosts
 ```
 docker pull gitlab/gitlab-ce
 docker pull portainer/portainer
-docker pull ubuntu
-docker pull mysql:5.7
-docker pull phpmyadmin/phpmyadmin:4.7
+docker pull mysql
+docker pull phpmyadmin/phpmyadmin
 ```
 
 ## Create Own Registry and Pull Images[Optional]
 [Ref.](https://docs.docker.com/registry/deploying/)
 ```
 docker run -d -p 15000:5000 \
- --restart=always \	
- --name dev-registry \ 
+ --restart=always \
+ --name dev-registry \
  -v /Users/oliguo/Work-Dev/Docker/registry/data:/var/lib/registry \
  registry:2
 
@@ -37,9 +36,9 @@ docker push dev.oli:15000/ubuntu
 ```
 docker run -d -p 9000:9000 \
  --name portainer \ 
- --restart always \ 
- -v /var/run/docker.sock:/var/run/docker.sock 
- -v /Users/oliguo/Work-Dev/Docker/portainer/data:/data \ 
+ --restart always \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /Users/oliguo/Work-Dev/Docker/portainer/data:/data \
  portainer/portainer
 ```
 
@@ -54,5 +53,24 @@ docker run --detach \
  --volume /Users/oliguo/Work-Dev/Docker/gitlab/config:/etc/gitlab \
  --volume /Users/oliguo/Work-Dev/Docker/gitlab/logs:/var/log/gitlab \
  --volume /Users/oliguo/Work-Dev/Docker/gitlab/data:/var/opt/gitlab \
- gitlab/gitlab-ce:latest
+ gitlab/gitlab-ce
 ```
+
+## MySQL and PhpMyAdmin
+```
+docker run -itd -p 3306:3306 \
+ --name mysql \
+ --restart always \
+ -v /Users/oliguo/Work-Dev/Docker/mysql/data:/var/lib/mysql \
+ -e MYSQL_ROOT_PASSWORD=root \
+ mysql:5.7
+
+docker run -d -p 8080:80 \
+ --name phpmyadmin \
+ --restart always \
+ --link mysql \
+ -e PMA_HOST="mysql" \
+ phpmyadmin/phpmyadmin:4.7
+```
+
+
