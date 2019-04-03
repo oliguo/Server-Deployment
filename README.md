@@ -1,13 +1,10 @@
 # Server Deployment
-***Last Edit:2019-04-02***
-
-Hi All,just a guide to setup Software on ***Ubuntu*** for my memo.
 
 **LAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/LAMPP.md)
 
 **XAMPP** [here](https://github.com/oliguo/Server_Deployment/blob/master/XAMPP.md)
 
-**Docker** [here](https://github.com/oliguo/Server_Deployment/blob/master/Docker%20Local%20Development%20Memo.md)
+**Docker** [here](https://github.com/oliguo/Server_Deployment/tree/master/docker)
 
 ## Change Server Time
 
