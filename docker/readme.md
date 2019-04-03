@@ -56,7 +56,7 @@ docker run --detach \
  gitlab/gitlab-ce
 ```
 
-## MySQL
+## MySQL and PhpMyAdmin
 ```
 docker run -itd -p 3306:3306 \
  --name mysql-5.7 \
@@ -76,4 +76,19 @@ docker run -d -p 8080:80 \
  phpmyadmin/phpmyadmin:4.7
 ```
 
+## Apache and PHP
+```
+docker run -itd \
+ -p 90:80 \
+ -p 99:443 \
+ --name alpine-apache-php7 \
+ --restart always \
+ -v /local-path/Docker/alpine-apache-php7/htdocs:/var/www/localhost/htdocs \
+ -v /local-path/Docker/alpine-apache-php7/config/apache2/httpd.conf:/etc/apache2/httpd.conf \
+ -v /local-path/Docker/alpine-apache-php7/config/apache2/conf.d:/etc/apache2/conf.d \
+ -v /local-path/Docker/alpine-apache-php7/config/php7/php.ini:/etc/php7/php.ini  \
+ -v /local-path/Docker/alpine-apache-php7/log/apache2:/var/log/apache2  \
+ -v /local-path/Docker/alpine-apache-php7/log/php7:/var/log/php7  \
+ oliguo/alpine-apache-php7
+```
 
