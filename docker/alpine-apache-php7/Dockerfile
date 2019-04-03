@@ -79,4 +79,4 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 RUN rm -f /var/cache/apk/*
 RUN rm -rf /tmp/*
 
-ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
