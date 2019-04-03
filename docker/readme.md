@@ -56,20 +56,23 @@ docker run --detach \
  gitlab/gitlab-ce
 ```
 
-## MySQL and PhpMyAdmin
+## MySQL
 ```
 docker run -itd -p 3306:3306 \
- --name mysql \
+ --name mysql-5.7 \
  --restart always \
  -v /Users/oliguo/Work-Dev/Docker/mysql/data:/var/lib/mysql \
+ -v /Users/oliguo/Work-Dev/Docker/mysql/log:/var/log/mysql \
+ -v /Users/oliguo/Work-Dev/Docker/mysql/config/mysql.conf.d:/etc/mysql/mysql.conf.d \
+ -v /Users/oliguo/Work-Dev/Docker/mysql/config/conf.d:/etc/mysql/conf.d \
  -e MYSQL_ROOT_PASSWORD=root \
  mysql:5.7
 
 docker run -d -p 8080:80 \
- --name phpmyadmin \
+ --name phpmyadmin-4.7 \
  --restart always \
- --link mysql \
- -e PMA_HOST="mysql" \
+ -e PMA_ARBITRARY=1 \
+ -v /Users/oliguo/Work-Dev/Docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php \
  phpmyadmin/phpmyadmin:4.7
 ```
 
