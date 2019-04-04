@@ -76,11 +76,11 @@ docker run -d -p 8080:80 \
  phpmyadmin/phpmyadmin:4.7
 ```
 
-## Apache and PHP
+## Apache and PHP7
 ```
 docker run -itd \
- -p 90:80 \
- -p 99:443 \
+ -p 990:80 \
+ -p 991:443 \
  --name alpine-apache-php7 \
  --restart always \
  -v /local-path/Docker/alpine-apache-php7/htdocs:/var/www/localhost/htdocs \
@@ -91,4 +91,21 @@ docker run -itd \
  -v /local-path/Docker/alpine-apache-php7/log/php7:/var/log/php7  \
  oliguo/alpine-apache-php7
 ```
+
+## Apache and PHP5
+```
+docker run -itd \
+ -p 880:80 \
+ -p 881:443 \
+ --name alpine-apache-php5 \
+ --restart always \
+ -v /local-path/Docker/alpine-apache-php5/htdocs:/var/www/localhost/htdocs \
+ -v /local-path/Docker/alpine-apache-php5/config/apache2/httpd.conf:/etc/apache2/httpd.conf \
+ -v /local-path/Docker/alpine-apache-php5/config/apache2/conf.d:/etc/apache2/conf.d \
+ -v /local-path/Docker/alpine-apache-php5/config/php5/php.ini:/etc/php5/php.ini  \
+ -v /local-path/Docker/alpine-apache-php5/log/apache2:/var/log/apache2  \
+ -v /local-path/Docker/alpine-apache-php5/log/php5:/var/log/php5  \
+ oliguo/alpine-apache-php5
+```
+
 
