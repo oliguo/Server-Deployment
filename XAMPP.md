@@ -1,5 +1,4 @@
 ## XAMPP Version 5.6.28
-***Last Edit:2018-08-03***
 
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
@@ -321,5 +320,15 @@ mysqli.default_socket=/opt/lampp/var/mysql/mysql.sock
 #</Directory>
 ```
 
+### Goaccess monitoring access_log
+```
+https://goaccess.io/
 
+$ echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
+$ wget -O - https://deb.goaccess.io/gnugpg.key | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install goaccess
+
+$ goaccess access_log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%h %^[%d:%t +0800%^] "%m %U %H" %s %b' -o report.html
+```
 
