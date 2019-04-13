@@ -3,22 +3,22 @@
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
 ### Download And Install
-<pre>
-wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.30/xampp-linux-x64-5.6.30-1-installer.run
-sudo chmod 777 xampp-linux-*-installer.run
-sudo ./xampp-linux-*-installer.run
-</pre>
+```
+$ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.30/xampp-linux-x64-5.6.30-1-installer.run
+$ sudo chmod 777 xampp-linux-*-installer.run
+$ sudo ./xampp-linux-*-installer.run
+```
 
 ### Restart and Secure Xampp
-<pre>
-sudo /opt/lampp/lampp restart
-sudo /opt/lampp/lampp security
-</pre>
+```
+$ sudo /opt/lampp/lampp restart
+$ sudo /opt/lampp/lampp security
+```
 
 ### Access Forbidden Setting
 ```
-sudo /opt/lampp/lampp stop
-sudo nano /opt/lampp/etc/extra/httpd-xampp.conf
+$ sudo /opt/lampp/lampp stop
+$ sudo nano /opt/lampp/etc/extra/httpd-xampp.conf
 ```
 edit like below
 ```
@@ -36,6 +36,61 @@ Require all granted #add this
 #    Require local
     ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
 </Directory>
+```
+
+### Enable rotatelog and access_log
+```
+$ sudo nano /opt/lampp/etc/httpd.conf
+
+check need to enable mod_logio.c, and find codes as below 
+<IfModule log_config_module>
+    #
+    # The following directives define some format nicknames for use with
+    # a CustomLog directive (see below).
+    #
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+
+    <IfModule logio_module>
+      # You need to enable mod_logio.c to use %I and %O
+      LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+    </IfModule>
+
+    #
+    # The location and format of the access logfile (Common Logfile Format).
+    # If you do not define any access logfiles within a <VirtualHost>
+    # container, they will be logged here.  Contrariwise, if you *do*
+    # define per-<VirtualHost> access logfiles, transactions will be
+    # logged therein and *not* in this file.
+    #
+    #CustomLog "logs/access_log" common
+
+    #
+    # If you prefer a logfile with access, agent, and referer information
+    # (Combined Logfile Format) you can use the following directive.
+    #
+    #CustomLog "logs/access_log" combined
+
+    #add this line to enable
+    LogFormat "%v %h %l %u %t \"%r\" %>s %D \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio-more
+    CustomLog "|/opt/lampp/bin/rotatelogs /opt/lampp/logs/access_log.%Y-%m-%d 86400" combinedio-more
+</IfModule>
+```
+
+### Goaccess monitoring access_log
+```
+https://goaccess.io/
+
+To install
+$ echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
+$ wget -O - https://deb.goaccess.io/gnugpg.key | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install goaccess
+
+Xampp 'combinedio-more' log-format 
+$ goaccess access_log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U %H" %s %T %R %u %^ %b' -o report.html
+
+sed -n '/10\/Apr\/2019/,/11\/Apr\/2019/ p' access_log > access_log_filter_date
 ```
 
 ### XAMPP Auto Start
@@ -320,17 +375,5 @@ mysqli.default_socket=/opt/lampp/var/mysql/mysql.sock
 #</Directory>
 ```
 
-### Goaccess monitoring access_log
-```
-https://goaccess.io/
 
-$ echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
-$ wget -O - https://deb.goaccess.io/gnugpg.key | sudo apt-key add -
-$ sudo apt-get update
-$ sudo apt-get install goaccess
-
-$ goaccess access_log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%h %^[%d:%t +0800%^] "%m %U %H" %s %b' -o report.html
-
-sed -n '/10\/Apr\/2019/,/11\/Apr\/2019/ p' access_log > access_log_filter_date
-```
 
