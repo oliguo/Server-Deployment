@@ -330,5 +330,7 @@ $ sudo apt-get update
 $ sudo apt-get install goaccess
 
 $ goaccess access_log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%h %^[%d:%t +0800%^] "%m %U %H" %s %b' -o report.html
+
+sed -n '/10\/Apr\/2019/,/11\/Apr\/2019/ p' access_log > access_log_filter_date
 ```
 
