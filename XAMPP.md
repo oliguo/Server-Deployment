@@ -91,7 +91,7 @@ LogFormat         default "%h %l %u %t \"%r\" %s %b"
 LogFormat			 auth "%v [%P] %h %t \"%r\" %s"
 LogFormat			write "%h %l %u %t \"%r\" %s %b"
 # You need to enable mod_logio.c to use %I and %O
-LogFormat combinedio-more "%v %h %l %u %t \"%r\" %>s %D \"%{Referer}i\" \"%{User-Agent}i\" %I %O"
+LogFormat combinedio-more "%v %h %l %u %t \"%r\" %s %I %O"
 
 # Logging
 #
