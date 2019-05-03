@@ -38,7 +38,7 @@ Require all granted #add this
 </Directory>
 ```
 
-### Enable rotatelog and access_log
+### Enable [apache]-(rotatelog and access_log),[proftpd]-(log)
 ```
 $ sudo nano /opt/lampp/etc/httpd.conf
 
@@ -75,6 +75,35 @@ check need to enable mod_logio.c, and find codes as below
     LogFormat "%v %h %l %u %t \"%r\" %>s %D \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio-more
     CustomLog "|/opt/lampp/bin/rotatelogs /opt/lampp/logs/access_log.%Y-%m-%d 86400" combinedio-more
 </IfModule>
+
+$sudo nano /opt/lampp/etc/proftpd.conf
+
+add code:
+-----------
+#
+# Logging options
+#
+TransferLog			/opt/lampp/logs/proftpd/xferlog
+#
+# Some logging formats
+#
+LogFormat         default "%h %l %u %t \"%r\" %s %b"
+LogFormat			 auth "%v [%P] %h %t \"%r\" %s"
+LogFormat			write "%h %l %u %t \"%r\" %s %b"
+# You need to enable mod_logio.c to use %I and %O
+LogFormat combinedio-more "%v %h %l %u %t \"%r\" %>s %D \"%{Referer}i\" \"%{User-Agent}i\" %I %O"
+
+# Logging
+#
+# file/dir access
+#
+ExtendedLog		/opt/lampp/logs/proftpd/access.log WRITE,READ combinedio-more
+#
+#
+# Record all logins
+#
+ExtendedLog		/opt/lampp/logs/proftpd/auth.log AUTH auth
+-----------
 ```
 
 ### Goaccess monitoring access_log
