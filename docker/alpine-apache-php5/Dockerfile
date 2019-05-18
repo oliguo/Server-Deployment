@@ -82,6 +82,9 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php5-sockets \
     php5-sysvmsg \
     imagemagick-dev
+    
+RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \ 
+    echo "Asia/Hong_Kong" > /etc/timezone    
 
 RUN cp /usr/bin/php5 /usr/bin/php && \
     mkdir -p /run/apache2
