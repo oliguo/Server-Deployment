@@ -205,8 +205,9 @@ slurm -s -i eth0
 ```
 
 ## Mount the drive
-(Reference 1)[https://yq.aliyun.com/articles/225380]
-(Reference 2)[https://www.cyberciti.biz/faq/mount-drive-from-command-line-ubuntu-linux/]
+[Reference 1](https://yq.aliyun.com/articles/225380)
+
+[Reference 2](https://www.cyberciti.biz/faq/mount-drive-from-command-line-ubuntu-linux/)
 ### list the drives
 ```
 $ fdisk -l
