@@ -76,6 +76,9 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php7-posix \
     php7-zlib
 
+RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \ 
+    echo "Asia/Hong_Kong" > /etc/timezone
+    
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 RUN rm -f /var/cache/apk/*
