@@ -203,3 +203,86 @@ sudo apt-get install slurm
 
 slurm -s -i eth0
 ```
+
+## Mount the drive
+(Reference 1)[https://yq.aliyun.com/articles/225380]
+(Reference 2)[https://www.cyberciti.biz/faq/mount-drive-from-command-line-ubuntu-linux/]
+### list the drives
+```
+$ fdisk -l
+```
+### example result
+```
+root@abcd:~# fdisk -l
+Disk /dev/vda: 40 GiB, 42949672960 bytes, 83886080 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6c740fc2
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/vda1  *     2048 83886046 83883999  40G 83 Linux
+
+
+Disk /dev/vdb: 40 GiB, 42949672960 bytes, 83886080 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+```
+### To mount the drive:/dev/vdb
+```
+$ fdisk /dev/vdb
+```
+### following the steps
+```
+root@abcd:~# fdisk /dev/vdb
+
+Welcome to fdisk (util-linux 2.31.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0xaa3faf38.
+
+Command (m for help): n ->Here
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p ->Here
+Partition number (1-4, default 1): 1
+First sector (2048-xxx, default 2048): ->click 'enter;
+Last sector, +sectors or +size{K,M,G,T,P} (2048-xxx, default xxx): ->click 'enter;
+
+Created a new partition 1 of type 'Linux' and of size 40 GiB.
+
+Command (m for help): wq ->Here
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+### list the drive
+```
+$ fdisk -l
+```
+### format the drive
+```
+$ mkfs.ext3 /dev/vdb1  
+```
+### create mount folder
+```
+$ mkdir /data_drive_0
+```
+### automatic mount at boot time
+```
+$ echo '/dev/vdb1 /data_drive_0 ext3 defaults 0 0' >> /etc/fstab 
+```
+### mount all drive
+```
+$ mount -a
+```
+### view the mounted list
+```
+$ df -h
+-> /dev/vdb1      39G   73M  39G   1% /data_drive_0
+```
