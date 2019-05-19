@@ -70,6 +70,7 @@ docker run -itd -p 3306:3306 \
 docker run -d -p 8080:80 \
  --name phpmyadmin-4.7 \
  --restart always \
+ --link mysql-5.7:db \
  -e PMA_ARBITRARY=1 \
  -v /local-path/Docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php \
  phpmyadmin/phpmyadmin:4.7
