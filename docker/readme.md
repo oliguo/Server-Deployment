@@ -62,7 +62,6 @@ docker run -itd -p 3306:3306 \
  --name mysql-5.7 \
  --restart always \
  -v /local-path/Docker/mysql/data:/var/lib/mysql \
- -v /local-path/Docker/mysql/log:/var/log/mysql \
  -v /local-path/Docker/mysql/config/mysql.conf.d:/etc/mysql/mysql.conf.d \
  -v /local-path/Docker/mysql/config/conf.d:/etc/mysql/conf.d \
  -e MYSQL_ROOT_PASSWORD=root \
