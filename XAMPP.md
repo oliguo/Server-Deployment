@@ -4,7 +4,7 @@ reference [here](https://www.apachefriends.org/faq_linux.html)
 
 ### Download And Install
 ```
-$ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.30/xampp-linux-x64-5.6.30-1-installer.run
+$ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.40/xampp-linux-x64-5.6.40-1-installer.run
 $ sudo chmod 777 xampp-linux-*-installer.run
 $ sudo ./xampp-linux-*-installer.run
 ```
