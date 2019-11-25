@@ -41,6 +41,8 @@ Universal Time is now:  Wed Feb 22 12:16:02 UTC 2017.
 <pre>
 df -h /path/xxx
 du -sh xxxx.file
+#list file maximun size
+du -h  --max-depth=1|sort -nr|more
 </pre>
 
 ## Rename,Copy file/folder
