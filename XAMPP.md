@@ -187,6 +187,7 @@ passwd ABCuser
 sudo nano /opt/lampp/etc/proftpd.conf
 *and comment below:
 #DefaultRoot /opt/lampp/htdocs
+#RequireValidShell off
 *and add user specify folder
 DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
 *restart lampp
