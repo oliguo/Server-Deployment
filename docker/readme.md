@@ -1,5 +1,13 @@
 # Docker Local Development Memo
 
+## Check memory usage
+```
+docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
+
+docker stats --no-stream --format 'table {{.MemPerc}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
+```
+
+
 ## Change Local Host
 ```
 sudo nano /etc/hosts
