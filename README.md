@@ -289,3 +289,8 @@ $ mount -a
 $ df -h
 -> /dev/vdb1      39G   73M  39G   1% /data_drive_0
 ```
+
+### Log htop log
+```
+ps auxf > `date +\%Y\%m\%d\%H\%M\%S`.csv
+```
