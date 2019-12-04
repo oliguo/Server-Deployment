@@ -7,6 +7,11 @@ docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' |
 docker stats --no-stream --format 'table {{.MemPerc}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
 ```
 
+## Log the docker stats to CSV
+```
+docker stats -a --no-stream >> mystats.csv
+```
+
 
 ## Change Local Host
 ```
