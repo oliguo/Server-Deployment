@@ -9,7 +9,7 @@ docker stats --no-stream --format 'table {{.MemPerc}}' | sed 's/[A-Za-z]*//g' | 
 
 ## Log the docker stats to CSV
 ```
-docker stats -a --no-stream >> mystats.csv
+docker stats -a --no-stream >> `date +\%Y\%m\%d\%H\%M\%S`.csv
 ```
 
 
