@@ -1,5 +1,10 @@
 # Docker Local Development Memo
 
+## Restart all containers
+```
+docker restart $(docker ps -q)
+```
+
 ## Check memory usage
 ```
 docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
