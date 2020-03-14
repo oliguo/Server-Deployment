@@ -408,5 +408,31 @@ mysqli.default_socket=/opt/lampp/var/mysql/mysql.sock
 #</Directory>
 ```
 
+## Secure Phpmyadmin by .htaccess
+
+### Create folders
+```
+sudo mkdir /opt/lampp/security
+sudo mkdir /opt/lampp/security/phpmyadmin
+```
+### Create auth user
+```
+sudo /opt/lampp/bin/htpasswd -c /opt/lampp/security/phpmyadmin/.htpasswd phpmyadmin_user
+```
+### Add one more auth user
+```
+sudo /opt/lampp/bin/htpasswd  /opt/lampp/security/phpmyadmin/.htpasswd abcd_user
+```
+### Create .htaccess, go to copy and paste the code below then save
+```
+sudo nano /opt/lampp/phpmyadmin/.htaccess
+```
+```
+AuthType Basic
+AuthName "Restricted Files"
+AuthUserFile /opt/lampp/security/phpmyadmin/.htpasswd
+Require valid-user
+```
+
 
 
