@@ -80,6 +80,8 @@ $sudo nano /opt/lampp/etc/proftpd.conf
 
 add code:
 -----------
+#enable passive mode
+PassivePorts 60000 65535
 #
 # Logging options
 #
