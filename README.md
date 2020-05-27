@@ -163,7 +163,7 @@ free -m
 
 2.create what you want memory for swap
 
-sudo fallocate -l 4G /swapfile  =>4g
+sudo fallocate -l 4G /swapfile  
 
 3.check swapfile
 
