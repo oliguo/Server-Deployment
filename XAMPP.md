@@ -40,6 +40,7 @@ Require all granted #add this
 
 ### Enable [apache]-(rotatelog and access_log),[proftpd]-(log)
 ```
+$ sudo mkdir /opt/lampp/logs/proftpd
 $ sudo nano /opt/lampp/etc/httpd.conf
 
 check need to enable mod_logio.c, and find codes as below 
@@ -119,10 +120,10 @@ $ sudo apt-get update
 $ sudo apt-get install goaccess
 
 Xampp 'combinedio-more' log-format (httpd)
-$ goaccess access_log.* --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U %H" %s %D %R %u %^ %b' -o report.html
+$ goaccess /opt/lampp/logs/access_log.* --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U %H" %s %D %R %u %^ %b' -o report.html
 
 Xampp 'combinedio-more' log-format (proftpd)
-$ goaccess access_log.* --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U" %s %b %b' -o report.html
+$ goaccess cproftpd/access.log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U" %s %b %b' -o report.html
 
 sed -n '/10\/Apr\/2019/,/11\/Apr\/2019/ p' access_log > access_log_filter_date
 ```
