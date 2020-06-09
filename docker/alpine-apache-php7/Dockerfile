@@ -74,7 +74,8 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php7-sysvsem \
     php7-opcache \
     php7-posix \
-    php7-zlib
+    php7-zlib \
+    php7-fileinfo
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \ 
     echo "Asia/Hong_Kong" > /etc/timezone
