@@ -1,4 +1,8 @@
 # Docker Local Development Memo
+## Clear Cache
+```
+docker system prune -a
+```
 
 ## Restart all containers
 ```
