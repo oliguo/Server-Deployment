@@ -153,7 +153,15 @@ sudo kill xxxx
 # cat /proc/sys/vm/swappiness 
 # 60 
 
-it means over 60 then will use the swap
+it means the memory is over 40(100-60) then will use the swap, 
+but it will make the disk I/O frequently, 
+suggest to change to over 90 then we use swap
+
+# sudo nano /etc/sysctl.conf
+---
+vm.swappiness = 10
+---
+# sudo sysctl -p
 
 1.check swap:
 
