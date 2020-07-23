@@ -148,10 +148,12 @@ sudo netstat -tunap | grep LISTEN
 sudo kill xxxx
 </pre>
 
-## How To Add Swap on Ubuntu 14.04
-[reference](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04)
+## How To Add Swap
+```
+# cat /proc/sys/vm/swappiness 
+# 60 
 
-<pre>
+it means over 60 then will use the swap
 
 1.check swap:
 
@@ -197,7 +199,7 @@ add bottom:
 
 /swapfile   none    swap    sw    0   0
 
-</pre>
+```
 
 ## Helpful visual to check traffic
 ```
