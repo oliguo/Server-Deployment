@@ -82,6 +82,8 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \
     
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
+RUN crond start
+
 RUN rm -f /var/cache/apk/*
 RUN rm -rf /tmp/*
 
