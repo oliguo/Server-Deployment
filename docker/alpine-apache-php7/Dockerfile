@@ -1,6 +1,11 @@
 FROM alpine
 
 LABEL org.label-schema.name="alpine-apache-php7"
+LABEL maintainer.name="Oliver Guo"
+LABEL maintainer.email="oli.zd.guo@gmail.com"
+
+COPY crontab.conf /opt/crontab.conf
+COPY entry.sh /opt/entry.sh
 
 RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
 	echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
@@ -87,4 +92,6 @@ RUN crond start
 RUN rm -f /var/cache/apk/*
 RUN rm -rf /tmp/*
 
-ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
+RUN chmod 777 /opt/entry.sh
+
+ENTRYPOINT ["/opt/entry.sh"]
