@@ -43,6 +43,15 @@ Require all granted #add this
 </Directory>
 ```
 
+## Server Header Disclosure
+```
+sudo nano /opt/lampp/etc/extra/httpd-default.conf
+
+change the "ServerTokens Full" to "ServerTokens Prod"
+reference: 
+https://www.acunetix.com/blog/articles/configure-web-server-disclose-identity/
+```
+
 ### Enable [apache]-(rotatelog and access_log),[proftpd]-(log)
 ```
 $ sudo mkdir /opt/lampp/logs/proftpd
