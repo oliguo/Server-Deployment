@@ -185,7 +185,7 @@ Options Includes FollowSymLinks MultiViews
 
 ## Create FTP User (Proftp)
 
-<pre>
+```
 sudo groupadd abc_group
 sudo mkdir -pv /opt/lampp/htdocs/project/abc
 sudo useradd -d /opt/lampp/htdocs/project/abc -g abc_group -s /sbin/nologin abc_dev
@@ -214,7 +214,7 @@ usermod -g primarygroupname username
 #To assign secondary groups to a user (-a keeps already existing secondary groups intact otherwise they'll be removed):
 usermod -a -G secondarygroupname username
 
-</pre>
+```
 
 ## Virtual Host Setup
 reference:
