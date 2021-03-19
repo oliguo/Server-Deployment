@@ -1,4 +1,4 @@
-## XAMPP Version 5.6.28
+## XAMPP Version 5.6.40/7.4.15
 
 reference [here](https://www.apachefriends.org/faq_linux.html)
 
