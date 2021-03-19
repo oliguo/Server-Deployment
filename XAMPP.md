@@ -55,6 +55,7 @@ https://www.acunetix.com/blog/articles/configure-web-server-disclose-identity/
 ### Enable [apache]-(rotatelog and access_log),[proftpd]-(log)
 ```
 $ sudo mkdir /opt/lampp/logs/proftpd
+$ sudo touch /opt/lampp/proftpd/ftpd.passwd
 $ sudo nano /opt/lampp/etc/httpd.conf
 
 check need to enable mod_logio.c, and find codes as below 
@@ -120,6 +121,8 @@ ExtendedLog		/opt/lampp/logs/proftpd/access.log WRITE,READ combinedio-more
 # Record all logins
 #
 ExtendedLog		/opt/lampp/logs/proftpd/auth.log AUTH auth
+
+AuthUserFile /opt/lampp/proftpd/ftpd.passwd
 -----------
 ```
 
@@ -183,36 +186,26 @@ Options Includes FollowSymLinks MultiViews
 ## Create FTP User (Proftp)
 
 <pre>
-*add Group
-groupadd ABCftp
-*if remove
-groupdel ABCftp
+sudo groupadd abc_group
+sudo mkdir -pv /opt/lampp/htdocs/project/abc
+sudo useradd -d /opt/lampp/htdocs/project/abc -g abc_group -s /sbin/nologin abc_dev
+sudo chown -Rv abc_dev:abc_group /opt/lampp/htdocs/project/abc
 
-*add user with home directory
-useradd -m -d /opt/lampp/htdocs/ABC -g ABCftp -s /sbin/nologin ABCuser
+sudo mkdir -pv /opt/lampp/htdocs/logs/abc
 
-    *if show error below:
-    useradd: warning: the home directory already exists.
-    Not copying any file from skel directory into it.
-    *please remove the folder and re-create new one(recommend)
+cat /etc/passwd | grep 'abc'
 
-*set user password
-passwd ABCuser
+sudo /opt/lampp/bin/ftpasswd  --passwd --file=/opt/lampp/proftpd/ftpd.passwd --name=abc_dev  --uid=xxxx --gid=xxxx  --home=/opt/lampp/htdocs/project/abc  --shell=/sbin/nologin
 
-*set only folder which user access
-*1.edit proftpd.conf
-sudo nano /opt/lampp/etc/proftpd.conf
-*and comment below:
-#DefaultRoot /opt/lampp/htdocs
-#RequireValidShell off
-*and add user specify folder
-DefaultRoot /opt/lampp/htdocs/ABC  ABCftp
-*restart lampp
-*and set user permission
-sudo chown -R ABCuser:ABCftp /var/www/test/public_html
-
-#check folder user and group
-ls -l /path/your folder
+DefaultRoot /opt/lampp/htdocs/project/abc abc_group
+<Directory "/opt/lampp/htdocs/project/abc">
+    <Limit CWD MKD RNFR READ WRITE STOR RETR>
+        DenyAll
+    </Limit>
+    <Limit CWD MKD RNFR READ WRITE STOR RETR>
+        AllowUser abc_dev
+    </Limit>
+</Directory>
 
 #change user group
 #To assign a primary group to an user:
