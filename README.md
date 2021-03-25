@@ -105,6 +105,12 @@ Choose **en_US.UTF-8**,if want change again and print it to check:
 <pre>
 sudo dpkg-reconfigure localepurge
 sudo locale-gen en_US.UTF-8
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
 </pre>
 
 Or mapping local locate to server like below:
