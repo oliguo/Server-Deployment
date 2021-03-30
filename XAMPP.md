@@ -183,6 +183,13 @@ edit like below without **Indexes**:
 Options Includes FollowSymLinks MultiViews
 </pre>
 
+## Shortcut
+```
+ln -s /opt/lampp/bin/php /usr/bin/php
+ln -s /opt/lampp/bin/mysql /usr/bin/mysql
+ln -s /opt/lampp/bin/mysqldump  /usr/bin/mysqldump
+```
+
 ## Create FTP User (Proftp)
 
 ```
