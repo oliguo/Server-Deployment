@@ -126,6 +126,23 @@ AuthUserFile /opt/lampp/proftpd/ftpd.passwd
 -----------
 ```
 
+### Compress output
+```
+sudo nano /opt/lampp/etc/httpd.conf
+
+find AddOutputFilter in <IfModule mime_module>,and add line of end of block
+
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+```
+
 ### Goaccess monitoring access_log
 ```
 https://goaccess.io/
