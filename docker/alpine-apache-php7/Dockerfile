@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.12
 
 LABEL org.label-schema.name="alpine-apache-php7"
 LABEL maintainer.name="Oliver Guo"
@@ -81,7 +81,11 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php7-opcache \
     php7-posix \
     php7-zlib \
-    php7-fileinfo
+    php7-fileinfo \
+    libressl-dev \
+    wget \
+    php7-dev \
+    build-base
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \ 
     echo "Asia/Hong_Kong" > /etc/timezone
