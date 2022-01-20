@@ -85,7 +85,9 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     libressl-dev \
     wget \
     php7-dev \
-    build-base
+    build-base \
+	imagemagick-dev \
+	imagemagick
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && \ 
     echo "Asia/Hong_Kong" > /etc/timezone
