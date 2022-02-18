@@ -51,6 +51,17 @@ reference:
 https://www.acunetix.com/blog/articles/configure-web-server-disclose-identity/
 ```
 
+## Set MYSQL SQL-Mode
+```
+check:
+
+set the sql_mode:
+sudo vim /opt/lampp/etc/my.cnf
+
+[mysqld]
+sql_mode=NO_ENGINE_SUBSTITUTION
+```
+
 ### Enable [apache]-(rotatelog and access_log),[proftpd]-(log)
 ```
 $ sudo mkdir /opt/lampp/logs/proftpd
