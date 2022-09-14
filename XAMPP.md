@@ -7,8 +7,8 @@ reference [here](https://www.apachefriends.org/faq_linux.html)
 5.6.40
 $ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/5.6.40/xampp-linux-x64-5.6.40-1-installer.run
 
-7.4.27
-$ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/7.4.27/xampp-linux-x64-7.4.27-2-installer.run
+7.4.29
+$ wget http://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Linux/7.4.29/xampp-linux-x64-7.4.29-1-installer.run
 $ sudo chmod 777 xampp-linux-*-installer.run
 $ sudo ./xampp-linux-*-installer.run
 ```
