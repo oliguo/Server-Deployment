@@ -478,5 +478,38 @@ AuthUserFile /opt/lampp/security/phpmyadmin/.htpasswd
 Require valid-user
 ```
 
-
-
+## Install Redis and PHP-Redis by source code way (Ubuntu / Centos7)
+### Step 1
+```
+Ubuntu
+    sudo apt update
+    sudo apt install git gcc autoconf 
+    sudo apt install redis-server
+    sudo nano /etc/redis/redis.conf 
+        change 'supervised no' to 'supervised systemd'
+    sudo systemctl restart redis.service
+    sudo systemctl status redis
+    
+Centos7
+    sudo yum install git gcc autoconf
+    sudo yum install epel-release
+    sudo yum install redis -y
+    sudo systemctl start redis.service
+    sudo systemctl enable redis
+    sudo systemctl status redis.service
+```
+### Step 2
+```
+git clone https://github.com/phpredis/phpredis.git
+cd phpredis
+sudo /opt/lampp/bin/phpize
+sudo CFLAGS="-std=gnu99" ./configure --with-php-config=/opt/lampp/bin/php-config
+sudo make 
+sudo make install
+    it will output below
+    Installing shared extensions:  /opt/lampp/lib/php/extensions/no-debug-non-zts-XXXXXXXX/
+sudo vim /opt/lampp/etc/php.ini
+    add extension="/opt/lampp/lib/php/extensions/no-debug-non-zts-XXXXXXXX/redis.so"
+sudo /opt/lampp/lampp restart
+php -m
+```
