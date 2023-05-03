@@ -164,10 +164,10 @@ $ sudo apt-get update
 $ sudo apt-get install goaccess
 
 Xampp 'combinedio-more' log-format (httpd)
-$ /usr/bin/goaccess /opt/lampp/logs/access_log.* --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U %H" %s %D %R %u %^ %b' -o /opt/lampp/htdocs/report.html
+$ LC_TIME="en_US.UTF-8" /usr/bin/goaccess /opt/lampp/logs/access_log.* --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^[%d:%t +0800%^] "%m %U %H" %s %D %R %u %^ %b' -o /opt/lampp/htdocs/report.html
 
 Xampp 'combinedio-more' log-format (proftpd)
-$ /usr/bin/goaccess /opt/lampp/logs/proftpd/access.log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^ %^ [%d:%t +0800%^] "%r" %s %^ %b' -o /opt/lampp/htdocs/ftp-report.html
+$ LC_TIME="en_US.UTF-8" /usr/bin/goaccess /opt/lampp/logs/proftpd/access.log --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format='%v %h %^ %^ [%d:%t +0800%^] "%r" %s %^ %b' -o /opt/lampp/htdocs/ftp-report.html
 
 sed -n '/10\/Apr\/2019/,/11\/Apr\/2019/ p' access_log > access_log_filter_date
 ```
