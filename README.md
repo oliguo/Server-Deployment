@@ -325,3 +325,26 @@ phpmyadmin/libraries/config.default.php, timeout limit
 $cfg['ExecTimeLimit'] = 0;
 ```
 
+# resize ubuntu disk
+```
+ref: 
+https://arstech.net/resize-linux-partition-command-line/
+https://community.spiceworks.com/topic/2325763-how-can-i-make-ubuntu-vg-ubuntu-lv-consume-the-entire-disk-space-available
+```
+### sudo fdisk -l
+### take snapshot or back whole disk first
+### sudo fdisk /dev/sda
+```
+1.type: p
+2.type: d
+3.remove /dev/sda3 by type 3
+4.type: n
+5.add new /dev/sda3 by type 3
+6.type default enter for First sector,Last sector
+7.type: w
+8.sudo reboot
+9.sudo pvresize /dev/sda3
+10.sudo lvresize -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+11.sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+12.sudo reboot
+```
