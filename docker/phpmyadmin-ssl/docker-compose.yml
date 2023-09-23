@@ -1,0 +1,28 @@
+version: '3'
+services:
+    phpmyadmin-5.2:
+        networks:
+            - web
+        ports:
+            - '8900:80'
+            - '8899:443'
+        container_name: phpmyadmin-5.2
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+            - UPLOAD_LIMIT=300M
+        volumes:
+            - "./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php"
+            - "./config/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+            - "./ssl:/etc/apache2/ssl"
+        image: phpmyadmin-ssl-img:1.0.0
+        external_links:
+            - mysql:mysql-5.7
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 512M
+networks:
+    web:
+      external: true
